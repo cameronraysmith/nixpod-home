@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Draft the release notes
-        uses: release-drafter/release-drafter@v5.24.0
+        uses: release-drafter/release-drafter@v5.25.0
         with:
           publish: false
           tag: v0.1.0
