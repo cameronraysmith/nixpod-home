@@ -27,12 +27,20 @@
       perSystem = { self', pkgs, system, ... }:
         let
           myUserName = "runner";
+          homeDir =
+            if myUserName == "root"
+            then "/root"
+            else "/${
+            if pkgs.stdenv.isDarwin
+            then "Users"
+            else "home"
+          }/${myUserName}";
           homeConfig = inputs.self.nixos-flake.lib.mkHomeConfiguration
             pkgs
             ({ pkgs, ... }: {
               imports = [ inputs.self.homeModules.default ];
               home.username = myUserName;
-              home.homeDirectory = "/${if pkgs.stdenv.isDarwin then "Users" else "home"}/${myUserName}";
+              home.homeDirectory = homeDir;
               home.stateVersion = "23.11";
             });
           inherit (inputs.nix2container.packages.${system}.nix2container) buildImage;
