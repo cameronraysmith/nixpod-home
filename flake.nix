@@ -3,8 +3,9 @@
 
   inputs = {
     # Principle inputs (updated by `nix run .#update`)
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -26,13 +27,21 @@
       perSystem = { self', pkgs, system, ... }:
         let
           myUserName = "runner";
+          homeDir =
+            if myUserName == "root"
+            then "/root"
+            else "/${
+            if pkgs.stdenv.isDarwin
+            then "Users"
+            else "home"
+          }/${myUserName}";
           homeConfig = inputs.self.nixos-flake.lib.mkHomeConfiguration
             pkgs
             ({ pkgs, ... }: {
               imports = [ inputs.self.homeModules.default ];
               home.username = myUserName;
-              home.homeDirectory = "/${if pkgs.stdenv.isDarwin then "Users" else "home"}/${myUserName}";
-              home.stateVersion = "22.11";
+              home.homeDirectory = homeDir;
+              home.stateVersion = "23.11";
             });
           inherit (inputs.nix2container.packages.${system}.nix2container) buildImage;
         in
