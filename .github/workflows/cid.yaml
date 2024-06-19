@@ -155,7 +155,7 @@ jobs:
     steps:
       - name: Maximize build space
         # uses: easimon/maximize-build-space@fc881a613ad2a34aca9c9624518214ebc21dfc0c # ratchet:easimon/maximize-build-space@v10
-        uses: cameronraysmith/maximize-build-space@fdf0c06b18d92be98aa64cb68ae4ea4c9bc4794d # ratchet:cameronraysmith/maximize-build-space@print-usage
+        uses: cameronraysmith/maximize-build-space@fc881a613ad2a34aca9c9624518214ebc21dfc0c # ratchet:cameronraysmith/maximize-build-space@print-usage
         with:
           build-mount-path: /nix
           build-mount-path-ownership: "root:root"
@@ -346,7 +346,7 @@ jobs:
     steps:
       - name: Maximize build space
         # uses: easimon/maximize-build-space@fc881a613ad2a34aca9c9624518214ebc21dfc0c # ratchet:easimon/maximize-build-space@v10
-        uses: cameronraysmith/maximize-build-space@fdf0c06b18d92be98aa64cb68ae4ea4c9bc4794d # ratchet:cameronraysmith/maximize-build-space@print-usage
+        uses: cameronraysmith/maximize-build-space@fc881a613ad2a34aca9c9624518214ebc21dfc0c # ratchet:cameronraysmith/maximize-build-space@print-usage
         with:
           build-mount-path: /nix
           build-mount-path-ownership: "root:root"
