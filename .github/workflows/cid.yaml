@@ -50,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
         with:
           fetch-depth: 0 # fetch all history so multiple commits can be scanned
       - name: GitGuardian scan
@@ -114,7 +114,7 @@ jobs:
       group: nixci-${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
     steps:
-      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@75ffa7fc743135e1db864b699d78402ccc8ed988 # ratchet:DeterminateSystems/nix-installer-action@main
         with:
@@ -167,7 +167,7 @@ jobs:
           remove-docker-images: "true"
                   
       - name: Setup build environment
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # ratchet:actions/checkout@v4
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
         with:
           ref: ${{ needs.set-variables.outputs.checkout_ref }}
         
@@ -195,7 +195,7 @@ jobs:
       group: debnix-${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
     steps:
-      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
       - name: Tag Build and Push Testing Container
         uses: ./.github/actions/tag-build-push-container
         with:
@@ -216,7 +216,7 @@ jobs:
       group: debjupnix-${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
     steps:
-      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
       - name: Tag Build and Push Testing Container
         uses: ./.github/actions/tag-build-push-container
         with:
@@ -240,7 +240,7 @@ jobs:
       group: debnixpod-${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
     steps:
-      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
       - name: Tag Build and Push Testing Container
         uses: ./.github/actions/tag-build-push-container
         with:
@@ -358,7 +358,7 @@ jobs:
           remove-docker-images: "true"
                   
       - name: Setup build environment
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # ratchet:actions/checkout@v4
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
         with:
           ref: ${{ needs.release.outputs.git-tag }}
         
@@ -386,7 +386,7 @@ jobs:
       group: publish-debnix-${{ github.workflow }}-${{ github.ref }}-${{ github.sha }}
       cancel-in-progress: true
     steps:
-      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
         with:
           ref: ${{ needs.release.outputs.git-tag }}
       - name: Tag Build and Push Testing Container
@@ -409,7 +409,7 @@ jobs:
       group: publish-debjupnix-${{ github.workflow }}-${{ github.ref }}-${{ github.sha }}
       cancel-in-progress: true
     steps:
-      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
         with:
           ref: ${{ needs.release.outputs.git-tag }}
       - name: Tag Build and Push Testing Container
@@ -436,7 +436,7 @@ jobs:
       group: publish-debnixpod-${{ github.workflow }}-${{ github.ref }}-${{ github.sha }}
       cancel-in-progress: true
     steps:
-      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
         with:
           ref: ${{ needs.release.outputs.git-tag }}
       - name: Tag Build and Push Testing Container
